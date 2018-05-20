@@ -1,0 +1,23 @@
+{
+    "name": "XME-pool",
+    "version": "0.0.1",
+    "license": "GPL-2.0",
+    "authors": "Andrew-Jackson",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/spotme-main/XME-pool"
+    },
+    "dependencies": {
+        "bignum": "*",
+        "async": "1",
+        "redis": "*",
+        "cli-color": "*",
+        "dateformat": "*",
+        "base58-native": "*",
+        "multi-hashing": "git://github.com/spotme-main/node-multi-hashing.git",
+        "cryptonote-util": "git://github.com/spotme-main/node-cryptonote-util.git"
+    },
+    "engines": {
+        "node": ">=0.10"
+    }
+}
