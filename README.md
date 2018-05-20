@@ -1,11 +1,7 @@
-cryptonote-forknote-pool
+SPOTme Coin pool based on cryptonote-forknote-pool
 ====================
 
-**NOTICE:  If you have problems with orphan blocks, read this first:
-https://github.com/forknote/forknote-pool/issues/48**
-
-
-High performance Node.js (with native C addons) mining pool for Cryptonote based coins, created with the Forknote software such as Bytecoin, Dashcoin, etc..
+High performance Node.js (with native C addons) mining pool for SPOTme coin.
 
 Comes with lightweight example front-end script which uses the pool's AJAX API.
 
@@ -14,7 +10,6 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 #### Table of Contents
 * [Features](#features)
 * [Community Support](#community--support)
-* [Pools Using This Software](#pools-using-this-software)
 * [Usage](#usage)
   * [Requirements](#requirements)
   * [Downloading & Installing](#1-downloading--installing)
@@ -82,17 +77,12 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 * [CryptoNote Universal Pool Forum](https://bitcointalk.org/index.php?topic=705509)
 * [Forknote](https://forknote.net)
 
-#### Pools Using This Software
-
-* http://democats.org
-* http://cryptonotepool.com/
 
 Usage
 ===
 
 #### Requirements
-* Coin daemon(s) (find the coin's repo and build latest version from source)
-* simplewallet (Bytecoin/Forknote v1.1.11).  Do NOT use Forknote 2.0.0, since it's in alpha
+* SPOTme Coin daemon v2.14 with CN-lite Variant 1
 ```
 * [Node.js](http://nodejs.org/) v0.10+ ([follow these installation instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager))
 * [Redis](http://redis.io/) key-value store v2.6+ ([follow these instructions](http://redis.io/topics/quickstart))
@@ -122,7 +112,7 @@ sudo apt-get install git build-essential redis-server libboost1.55-all-dev nodej
 Clone the repository and run `npm update` for all the dependencies to be installed:
 
 ```bash
-git clone https://github.com/forknote/cryptonote-universal-pool.git pool
+git clone https://github.com/spotme-main/XME-pool.git pool
 cd pool
 npm update
 ```
@@ -133,10 +123,10 @@ npm update
 Explanation for each field:
 ```javascript
 /* Used for storage in redis so multiple coins can share the same redis instance. */
-"coin": "dashcoin",
+"coin": "SPOTme",
 
 /* Used for front-end display */
-"symbol": "DSH",
+"symbol": "XME",
 
 /* Minimum units in a single coin, see COIN constant in DAEMON_CODE/src/cryptonote_config.h */
 "coinUnits": 1000000000000,
@@ -467,18 +457,6 @@ the Node.js modules, and any config files that may have been changed.
 * Run `npm update` to force updating/reinstalling of the dependencies.
 * Compare your `config.json` to the latest example ones in this repo or the ones in the setup instructions where each config field is explained. You may need to modify or add any new changes.
 
-### Setting up Testnet
-
-No cryptonote based coins have a testnet mode (yet) but you can effectively create a testnet with the following steps:
-
-* Open `/src/p2p/net_node.inl` and remove lines with `ADD_HARDCODED_SEED_NODE` to prevent it from connecting to mainnet (Monero example: http://git.io/0a12_Q)
-* Build the coin from source
-* You now need to run two instance of the daemon and connect them to each other (without a connection to another instance the daemon will not accept RPC requests)
-  * Run first instance with `./forknoted --p2p-bind-port 28080 --allow-local-ip`
-  * Run second instance with `./forknoted --p2p-bind-port 5011 --rpc-bind-port 5010 --add-peer 0.0.0.0:28080 --allow-local-ip`
-* You should now have a local testnet setup. The ports can be changes as long as the second instance is pointed to the first instance, obviously
-
-*Credit to surfer43 for these instructions*
 
 
 ### JSON-RPC Commands from CLI
